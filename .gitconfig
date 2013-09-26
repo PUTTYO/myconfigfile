@@ -1,6 +1,5 @@
 [user]
     name = Yuji Mori
-    email = mori.yuji@techcross.co.jp
 
 [core]
     excludesfile = ~/.gitignore
