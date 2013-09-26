@@ -1,0 +1,53 @@
+[user]
+    name = Yuji Mori
+    email = mori.yuji@techcross.co.jp
+
+[core]
+    excludesfile = ~/.gitignore
+    autocrlf = false
+	editor = vim
+[color]
+    ui = auto
+	status = auto
+    branch = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "status"]
+    added = yellow
+    changed = green
+
+[alias]
+    st = status
+    sh = show
+    sb = show-branch
+    br = branch
+    rema = rebase origin/master master
+    ci = commit
+    cm = commit
+    cmt = commit -v
+    coma = commit -a -v
+    cma = commit -a -v
+    co = checkout
+    cl = clone
+    dc = diff --cached
+    df = diff
+    d = diff -C
+    ds = diff -C --stat
+    dsp = diff -C --stat -p
+    dw = diff -C --color-words
+    lg = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d'
+    l = log
+    m = checkout master
+    ituja = log --patch -S
+    graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
