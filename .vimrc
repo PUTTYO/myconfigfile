@@ -12,6 +12,13 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundle 'Shougo/neobundle.vim'
 " 以下のプラグインをバンドル
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'mklabs/vim-backbone'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+"NeoBundle 'hallettj/jslint.vim'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'igetgames/vim-backbone-jscomplete'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'vim-scripts/taglist.vim'
@@ -540,6 +547,22 @@ augroup HighlightTrailingSpaces
     autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 
+let g:used_javascript_libs = 'underscore,backbone,jquery'
+autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_requirejs = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
+
+"au FileType javascript call JavaScriptFold()
+autocmd FileType javascript
+  \ :setl omnifunc=jscomplete#CompleteJS
+" DOMとMozilla関連とES6のメソッドを補完
+let g:jscomplete_use = ['dom', 'moz', 'es6th']
+
+" このようにするとjshintを必ず使ってチェックしてくれるようになる
+"let g:syntastic_javascript_checker = "jshint"
 
 "no indent
 autocmd FileType * setlocal formatoptions-=ro
