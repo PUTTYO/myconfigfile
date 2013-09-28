@@ -1,16 +1,12 @@
-
 " vi 互換ではなくVim のデフォルト設定にする
 set nocompatible
-
-"set cursorline     " カーソル行の背景色を変える
-"set cursorcolumn   " カーソル位置のカラムの背景色を変える
 
 """ NeoBundelの設定
 " 一旦ファイルタイプ関連を無効化
 filetype off
 " neobundleでプラグインを管理
 if has('vim_starting')
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundle 'Shougo/neobundle.vim'
@@ -71,11 +67,6 @@ let $JS_CMD='node'
 let g:hybrid_use_Xresources = 1
 colorscheme hybrid
 
-" ファイラー関連
-nnoremap <Leader>e :VimFilerExplorer<CR>
-let g:vimfiler_enable_auto_cd = 1
-let g:vimfiler_as_default_explorer = 1
-
 "buffer
 nnoremap <silent>bf :bf<CR>
 nnoremap <silent>bl :bl<CR>
@@ -85,152 +76,50 @@ nnoremap <silent>bp :bprevious<CR>
 nnoremap <silent>bn :bnext<CR>
 nnoremap <silent>bb :b#<CR>
 
-" unite
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-
-
-"unite prefix key.
-nnoremap [unite] <Nop>
-nmap <Space>f [unite]
-
-"unite general settings
-"インサートモードで開始
-let g:unite_enable_start_insert = 1
-"最近開いたファイル履歴の保存数
-let g:unite_source_file_mru_limit = 50
-
-"file_mruの表示フォーマットを指定。空にすると表示スピードが高速化される
-let g:unite_source_file_mru_filename_format = ''
-
-"現在開いているファイルのディレクトリ下のファイル一覧。
-"開いていない場合はカレントディレクトリ
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-"バッファ一覧
-nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-"レジスタ一覧
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-"最近使用したファイル一覧
-nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-"ブックマーク一覧
-nnoremap <silent> [unite]c :<C-u>Unite bookmark<CR>
-"ブックマークに追加
-nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
-"uniteを開いている間のキーマッピング
-autocmd FileType unite call s:unite_my_settings()
-
-function! s:unite_my_settings()"{{{
-  "ESCでuniteを終了
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-  "入力モードのとき
-  imap <buffer> jj <Plug>(unite_insert_leave)
-  "ctrl+jで縦に分割して開く
-  nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-  inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-  "ctrl+jで横に分割して開く
-  nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-  inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-  "ctrl+oでその場所に開く
-  nnoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
-  inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
-endfunction"}}}
-
-
-
-
 filetype plugin on
 filetype indent on
 
 " 環境設定系
-" シンタックスハイライト
-syntax on
-" エンコード
-set encoding=utf8
-" ファイルエンコード
-set fileencoding=utf-8
-" スクロールする時に下が見えるようにする
-set scrolloff=5
-" .swapファイルを作らない
-set noswapfile
-" バックアップファイルを作らない
-set nowritebackup
-" バックアップをしない
-set nobackup
-" バックスペースで各種消せるようにする
-set backspace=indent,eol,start
-" ビープ音を消す
-set vb t_vb=
+syntax on                           " シンタックスハイライト
+set encoding=utf8                   " エンコード
+set fileencoding=utf-8              " ファイルエンコード
+set scrolloff=5                     "スクロールする時に下が見えるようにする
+set backspace=indent,eol,start      " バックスペースで各種消せるようにする
+set vb t_vb=                        " ビープ音を消す
 set novisualbell
-" OSのクリップボードを使う
-set clipboard+=unnamed
-set clipboard=unnamed
-" 不可視文字を表示
-set list
-" 行番号を表示
-set number
-" 右下に表示される行・列の番号を表示する
-set ruler
-" compatibleオプションをオフにする
-set nocompatible
-" 移動コマンドを使ったとき、行頭に移動しない
-set nostartofline
-" 対応括弧に<と>のペアを追加
-set matchpairs& matchpairs+=<:>
-" 対応括弧をハイライト表示する
-set showmatch
-" 対応括弧の表示秒数を3秒にする
-set matchtime=3
-" ウィンドウの幅より長い行は折り返され、次の行に続けて表示される
-set wrap
-" 入力されているテキストの最大幅を無効にする
-"set textwidth=0
+set clipboard+=unnamed " OSのクリップボードを使う
+set clipboard=unnamed  " OSのクリップボードを使う
+set list " 不可視文字を表示
+set number  " 行番号を表示
+set ruler " 右下に表示される行・列の番号を表示する
+set nostartofline " 移動コマンドを使ったとき、行頭に移動しない
+set matchpairs& matchpairs+=<:> " 対応括弧に<と>のペアを追加
+set showmatch " 対応括弧をハイライト表示する
+set matchtime=3 " 対応括弧の表示秒数を3秒にする
+set wrap " ウィンドウの幅より長い行は折り返され、次の行に続けて表示される
 " 不可視文字を表示
 "set listchars=tab:>-,extends:<,trail:-,eol:\
 set listchars=tab:>-,extends:<,trail:-
 highlight NonText guifg=darkgreen
-" インデントをshiftwidthの倍数に丸める
-set shiftwidth=4
-set shiftround
-" 補完の際の大文字小文字の区別しない
-set infercase
-" 文字がない場所にもカーソルを移動できるようにする
-"set virtualedit=all
-" 変更中のファイルでも、保存しないで他のファイルを表示
-set hidden
-" 新しく開く代わりにすでに開いてあるバッファを開く
-set switchbuf=useopen
-" 小文字の検索でも大文字も見つかるようにする
-set ignorecase
-" ただし大文字も含めた検索の場合はその通りに検索する
-set smartcase
-" インクリメンタルサーチを行う
-set incsearch
-" 検索結果をハイライト表示
-:set hlsearch
-" コマンド、検索パターンを10000個まで履歴に残す
-set history=10000
-" マウスモード有効
-"set mouse=a
-" xtermとscreen対応
-set ttymouse=xterm2
-" コマンドを画面最下部に表示する
-set showcmd
+"set shiftround
 
-" タブを表示するときの幅
-set tabstop=4
-" タブを挿入するときの幅
-set shiftwidth=4
+set infercase " 補完の際の大文字小文字の区別しない
+set hidden " 変更中のファイルでも、保存しないで他のファイルを表示
+set switchbuf=useopen " 新しく開く代わりにすでに開いてあるバッファを開く
+"set ignorecase " 小文字の検索でも大文字も見つかるようにする
+set smartcase " ただし大文字も含めた検索の場合はその通りに検索する
+set incsearch " インクリメンタルサーチを行う
+set hlsearch " 検索結果をハイライト表示
+set history=10000 " コマンド、検索パターンを10000個まで履歴に残す
+set ttymouse=xterm2 " xtermとscreen対応
+set showcmd " コマンドを画面最下部に表示する
 
+set tabstop=4 " タブを表示するときの幅
+set shiftwidth=4 " タブを挿入するときの幅
 set expandtab
 
 " w!! でスーパーユーザーとして保存（sudoが使える環境限定）
-"cmap w!! w !sudo tee > /dev/null %
+cmap w!! w !sudo tee > /dev/null %
 " 入力モード中に素早くJJと入力した場合はESCとみなす
 inoremap jj <Esc>
 " ESCを二回押すことでハイライトを消す
@@ -289,7 +178,7 @@ let s:local_vimrc = expand('~/.vimrc.local')
 if filereadable(s:local_vimrc)
     execute 'source ' . s:local_vimrc
 endif
- 
+
 " /{pattern}の入力中は「/」をタイプすると自動で「\/」が、
 " ?{pattern}の入力中は「?」をタイプすると自動で「\?」が 入力されるようになる
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
@@ -306,23 +195,17 @@ autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-" PHPの関数やクラスの折りたたみ
-let php_folding = 0
-" 文字列の中のSQLをハイライト
-let php_sql_query = 1
-" Baselibメソッドのハイライト
-let php_baselib = 1
-" HTMLもハイライト
-let php_htmlInStrings = 1
-" <? を無効にする→ハイライト除外にする
-let php_noShortTags = 1
-" ] や ) の対応エラーをハイライト
-let php_parent_error_close = 1
+let php_folding = 0 " PHPの関数やクラスの折りたたみ
+let php_sql_query = 1   "文字列の中のSQLをハイライト
+let php_baselib = 1 " Baselibメソッドのハイライト
+let php_htmlInStrings = 1 " HTMLもハイライト
+let php_noShortTags = 1 " <? を無効にする→ハイライト除外にする
+let php_parent_error_close = 1 " ] や ) の対応エラーをハイライト
 let php_parent_error_open = 1
 " SQLのPHP文字リテラルへの整形(:Sqltop, :Sqlfromp)
 function! SQLToPHP()
 %s/^\(.\+\)$/"\1 " \./g
- 
+
 normal G$
 execute "normal ?.&lt;CR&gt;"
 normal xxggVG
@@ -331,7 +214,7 @@ endfunction
 command! Sqltop :call SQLToPHP()
 function! SQLFromPHP()
 %s/^"\(.\+\) " *\.*$/\1/g
- 
+
 normal ggVG
 echo "Convert from PHP String is finished."
 endfunction
@@ -340,23 +223,7 @@ command! Sqlfromp :call SQLFromPHP()
 highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
- 
-" neocomplcacheを起動時に有効化する
-let g:neocomplcache_enable_at_startup = 1
-" 大文字を区切りとしたワイルドカードのように振る舞う機能
-let g:neocomplcache_enable_camel_case_completion = 1
-" _区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion = 1
-" 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_smart_case = 1
-" シンタックスをキャッシュするときの最小文字長を3に
-let g:neocomplcache_min_syntax_length = 3
-"手動補完時に補完を行う入力数を制御
-let g:neocomplcache_manual_completion_start_length = 0
-let g:neocomplcache_caching_percent_in_statusline = 1
-let g:neocomplcache_enable_skip_completion = 1
-let g:neocomplcache_skip_input_time = '0.5'
- 
+
 " Perl用設定
 autocmd BufNewFile,BufRead *.psgi   set filetype=perl
 autocmd BufNewFile,BufRead *.t      set filetype=perl
@@ -372,7 +239,7 @@ imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
- 
+
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
@@ -381,12 +248,12 @@ endif
 let g:neosnippet#snippets_directory='~/.vim/snippets/snippets'
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = { 'default'    : '', 'perl'       : $HOME . '/.vim/dict/perl.dict' }
- 
+
 " Java用設定
 "SQLのJava文字リテラルへの整形(:Sqltoj, :Sqlfromj)
 function! SQLToJava()
 %s/^\(.\+\)$/"\1 " \+/g
- 
+
 normal G$
 execute "normal ?+\&lt;CR&gt;"
 normal xxggVG
@@ -395,25 +262,25 @@ endfunction
 command! Sqltoj :call SQLToJava()
 function! SQLFromJava()
 %s/^"\(.\+\) " *+*$/\1/g
- 
+
 normal ggVG
 echo "Convert from Java String is finished."
 endfunction
 command! Sqlfromj :call SQLFromJava()
- 
+
 " Ruby用設定
 " :makeでRuby構文チェック
 au FileType ruby setlocal makeprg=ruby\ -c\ %
 au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
- 
+
 " \ + rでスクリプト実行
 nmap <Leader>r <plug>(quickrun)
- 
+
 " 全角スペースのハイライトを設定
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
 endfunction
- 
+
 if has('syntax')
   augroup ZenkakuSpace
     autocmd!
@@ -427,11 +294,23 @@ endif
 
 
 " neocomplcache
-let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+let g:neocomplcache_enable_at_startup = 1
+" 大文字を区切りとしたワイルドカードのように振る舞う機能
+let g:neocomplcache_enable_camel_case_completion = 1
+" _区切りの補完を有効化
+let g:neocomplcache_enable_underbar_completion = 1
+" 大文字が入力されるまで大文字小文字の区別を無視する
+let g:neocomplcache_smart_case = 1
+" シンタックスをキャッシュするときの最小文字長を3に
+let g:neocomplcache_min_syntax_length = 3
+"手動補完時に補完を行う入力数を制御
+let g:neocomplcache_manual_completion_start_length = 0
+let g:neocomplcache_caching_percent_in_statusline = 1
+let g:neocomplcache_enable_skip_completion = 1
+let g:neocomplcache_skip_input_time = '0.5'
+ 
 " 補完ウィンドウの設定
 set completeopt=menuone
-" 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
 " 大文字が入力されるまで大文字小文字の区別を無視する
 let g:neocomplcache_enable_smart_case = 1
 " _(アンダースコア)区切りの補完を有効化
@@ -447,7 +326,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'php' : $HOME . '/.vim/dict/php.dict',
     \ 'ctp' : $HOME . '/.vim/dict/php.dict'
     \ }
- 
+
 
 if !exists('g:neocomplcache_keyword_patterns')
 	        let g:neocomplcache_keyword_patterns = {}
