@@ -13,12 +13,28 @@ NeoBundle 'Shougo/neobundle.vim'
 " 以下のプラグインをバンドル
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'mklabs/vim-backbone'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
 "NeoBundle 'hallettj/jslint.vim'
-NeoBundle 'jiangmiao/simple-javascript-indenter'
+
+NeoBundle 'jiangmiao/simple-javascript-indenter'  "let g:SimpleJsIndenter_BriefMode = 1
+let g:SimpleJsIndenter_BriefMode = 1
+
 NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'vim-scripts/jshint.vim'
 NeoBundle 'igetgames/vim-backbone-jscomplete'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+"NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+"NeoBundle 'taichouchou2/vim-javascript'
+NeoBundle 'pangloss/vim-javascript'
+set regexpengine=1
+syntax enable
+let javascript_enable_domhtmlcss = 1
+"let g:javascript_conceal = 1
+"let b:javascript_fold = 1
+syntax match jsFunctionVar /\<[a-zA-Z_$][0-9a-zA-Z_$]*\>\(\s*=\s*function\s*\)\@=/ containedin=jsFuncBlock,jsBlock,jsParen
+
+
+
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'vim-scripts/taglist.vim'
@@ -36,7 +52,6 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tell-k/vim-browsereload-mac'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
-NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-endwise.git'
 NeoBundle 'ruby-matchit'
@@ -64,7 +79,7 @@ NeoBundle 'Shougo/neosnippet'
 " 実行プラグインをバンドル
 NeoBundle 'thinca/vim-quickrun'
 "undo
-NeoBundle 'sjl/gundo'
+NeoBundle 'sjl/gundo.vim'
 set t_Co=256
 
 "javascriptの実行をnode.jsで
@@ -385,7 +400,7 @@ if has("autocmd")
         autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType html       setlocal sw=4 sts=4 ts=4 et
         autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
-        autocmd FileType javascript setlocal sw=4 sts=4 ts=4 et
+        "autocmd FileType javascript setlocal sw=4 sts=4 ts=4 et
         autocmd FileType less,sass  setlocal sw=2 sts=2 ts=2 et
         autocmd FileType lisp       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType markdown   setlocal sw=4 sts=4 ts=4 et
@@ -416,7 +431,7 @@ au BufNewFile,BufRead *.* set tags+=$HOME/project/sally-ui/tags
 "au BufNewFile,BufRead *.js set tags+=$HOME/js.tags
 "autocmd FileType php set tags=$HOME/.vim/tags/cakephp13.tags,$HOME/.vim/tags/cakephp_app.tags
 " tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]> 
+nnoremap <C-]> g<C-]>
 
 "Tlist
 let g:tlist_javascript_settings = 'javascript;c:class;m:method;F:function;p:property'
@@ -427,29 +442,29 @@ let Tlist_Exit_OnlyWindow = 1                 " taglistのウインドウだけ�
 map <silent> <leader>l :TlistToggle<CR>       "ウインドウを開いたり閉じたり出来るショートカット
 
 "srcexpl
-" // The switch of the Source Explorer 
-nmap <F8> :SrcExplToggle<CR> 
+" // The switch of the Source Explorer
+nmap <F8> :SrcExplToggle<CR>
 
-" // Set the height of Source Explorer window 
-let g:SrcExpl_winHeight = 8 
+" // Set the height of Source Explorer window
+let g:SrcExpl_winHeight = 8
 
-" // Set 100 ms for refreshing the Source Explorer 
+" // Set 100 ms for refreshing the Source Explorer
 let g:SrcExpl_refreshTime = 100
 
-" // Set "Enter" key to jump into the exact definition context 
-let g:SrcExpl_jumpKey = "<ENTER>" 
+" // Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_jumpKey = "<ENTER>"
 
-" // Set "Space" key for back from the definition context 
-let g:SrcExpl_gobackKey = "<SPACE>" 
+" // Set "Space" key for back from the definition context
+let g:SrcExpl_gobackKey = "<SPACE>"
 
 " // In order to avoid conflicts, the Source Explorer should know what plugins
 " // except itself are using buffers. And you need add their buffer names into
 " // below listaccording to the command ":buffers!"
-let g:SrcExpl_pluginList = [ 
-        \ "__Tag_List__", 
+let g:SrcExpl_pluginList = [
+        \ "__Tag_List__",
         \ "_NERD_tree_" ,
         \ "Source_Explorer"
-    \ ] 
+    \ ]
 
 " // Enable/Disable the local definition searching, and note that this is not 
 " // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
@@ -547,7 +562,7 @@ augroup HighlightTrailingSpaces
     autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 
-let g:used_javascript_libs = 'underscore,backbone,jquery'
+let g:used_javascript_libs = 'underscore,backbone,jquery,requirejs'
 autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
@@ -556,13 +571,39 @@ autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
 
 "au FileType javascript call JavaScriptFold()
-autocmd FileType javascript
-  \ :setl omnifunc=jscomplete#CompleteJS
+"autocmd FileType javascript
+"  \ :setl omnifunc=jscomplete#CompleteJS
 " DOMとMozilla関連とES6のメソッドを補完
 let g:jscomplete_use = ['dom', 'moz', 'es6th']
 
 " このようにするとjshintを必ず使ってチェックしてくれるようになる
 "let g:syntastic_javascript_checker = "jshint"
+"let g:syntastic_javascript_checker = 'jshint'
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+let g:syntastic_mode_map = {
+      \  'mode': 'active',
+      \ 'active_filetypes': ['ruby', 'javascript'],
+      \ 'passive_filetypes': []
+      \ }
+
+" HTML 5 tags
+syn keyword htmlTagName contained article aside audio bb canvas command
+syn keyword htmlTagName contained datalist details dialog embed figure
+syn keyword htmlTagName contained header hgroup keygen mark meter nav output
+syn keyword htmlTagName contained progress time ruby rt rp section time
+syn keyword htmlTagName contained source figcaption
+syn keyword htmlArg contained autofocus autocomplete placeholder min max
+syn keyword htmlArg contained contenteditable contextmenu draggable hidden
+syn keyword htmlArg contained itemprop list sandbox subject spellcheck
+syn keyword htmlArg contained novalidate seamless pattern formtarget
+syn keyword htmlArg contained formaction formenctype formmethod
+syn keyword htmlArg contained sizes scoped async reversed sandbox srcdoc
+syn keyword htmlArg contained hidden role
+syn match   htmlArg "\<\(aria-[\-a-zA-Z0-9_]\+\)=" contained
+syn match   htmlArg contained "\s*data-[-a-zA-Z0-9_]\+"
 
 "no indent
 autocmd FileType * setlocal formatoptions-=ro
