@@ -213,6 +213,10 @@ endif
 " PHP用設定
 " PHP辞書ファイル指定
 autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
+highlight Pmenu ctermbg=4
+highlight PmenuSel ctermbg=1
+highlight PMenuSbar ctermbg=4
+
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
@@ -580,11 +584,12 @@ let g:jscomplete_use = ['dom', 'moz', 'es6th']
 "let g:syntastic_javascript_checker = 'jshint'
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_javascript_jshint_conf="~/.jshintrc"
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
 let g:syntastic_mode_map = {
       \  'mode': 'active',
-      \ 'active_filetypes': ['ruby', 'javascript'],
+      \ 'active_filetypes': ['php', 'ruby', 'javascript'],
       \ 'passive_filetypes': []
       \ }
 
@@ -603,6 +608,44 @@ syn keyword htmlArg contained sizes scoped async reversed sandbox srcdoc
 syn keyword htmlArg contained hidden role
 syn match   htmlArg "\<\(aria-[\-a-zA-Z0-9_]\+\)=" contained
 syn match   htmlArg contained "\s*data-[-a-zA-Z0-9_]\+"
+
+
+
+""" unite.vim
+" 入力モードで開始する
+" let g:unite_enable_start_insert=1
+"let g:unite_enable_split_vertically = 1 "縦分割で開く
+"let g:unite_winwidth = 40 "横幅40で開く
+" バッファ一覧
+nnoremap :ub :<C-u>Unite buffer -buffer-name=buffer<CR>
+" ファイル一覧
+nnoremap :uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap :ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap :um :<C-u>Unite file_mru -buffer-name=file_mru<CR>
+" 常用セット
+nnoremap :uu :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap :ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+"file current_dir
+noremap :ufc :Unite file -buffer-name=file<CR>
+noremap :ufcr :Unite file_rec -buffer-name=file_rec<CR>
+
+"file file_current_dir
+noremap :uff :UniteWithBufferDir file -buffer-name=file
+noremap :uffr :UniteWithBufferDir file_rec -buffer-name=file_rec
+
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 "no indent
 autocmd FileType * setlocal formatoptions-=ro
