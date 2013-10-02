@@ -21,18 +21,17 @@ let g:SimpleJsIndenter_BriefMode = 1
 NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'vim-scripts/jshint.vim'
 NeoBundle 'igetgames/vim-backbone-jscomplete'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 "NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 "NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'pangloss/vim-javascript'
-set regexpengine=1
+"set regexpengine = 1
 syntax enable
 let javascript_enable_domhtmlcss = 1
 "let g:javascript_conceal = 1
 "let b:javascript_fold = 1
-syntax match jsFunctionVar /\<[a-zA-Z_$][0-9a-zA-Z_$]*\>\(\s*=\s*function\s*\)\@=/ containedin=jsFuncBlock,jsBlock,jsParen
-
+"syntax match jsFunctionVar /\<[a-zA-Z_$][0-9a-zA-Z_$]*\>\(\s*=\s*function\s*\)\@=/ containedin=jsFuncBlock,jsBlock,jsParen
 
 
 NeoBundle 'Shougo/vimfiler'
