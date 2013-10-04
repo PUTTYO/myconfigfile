@@ -212,6 +212,7 @@ endif
 
 " PHP用設定
 " PHP辞書ファイル指定
+"  php -r '$f=get_defined_functions();echo join("\n",$f["internal"]);'|sort > ~/.vim/dict/php.dict
 autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
 highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
@@ -580,12 +581,10 @@ autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
 let g:jscomplete_use = ['dom', 'moz', 'es6th']
 
 " このようにするとjshintを必ず使ってチェックしてくれるようになる
-"let g:syntastic_javascript_checker = "jshint"
-"let g:syntastic_javascript_checker = 'jshint'
-let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_jshint_conf="~/.jshintrc"
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
 let g:syntastic_mode_map = {
       \  'mode': 'active',
@@ -646,6 +645,28 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=45 -toggle -no-quit<Cr>
+autocmd! FileType vimfiler call g:my_vimfiler_settings()
+function! g:my_vimfiler_settings()
+  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<Cr>
+  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<Cr>
+endfunction
+
+let s:my_action = { 'is_selectable' : 1 }
+function! s:my_action.func(candidates)
+  wincmd p
+  exec 'split '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_split', s:my_action)
+
+let s:my_action = { 'is_selectable' : 1 }
+function! s:my_action.func(candidates)
+  wincmd p
+  exec 'vsplit '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_vsplit', s:my_action)
 
 "no indent
 autocmd FileType * setlocal formatoptions-=ro
