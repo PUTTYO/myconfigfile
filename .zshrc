@@ -126,6 +126,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 #ls aliases
+alias rm='rm -i'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -135,6 +136,9 @@ alias vim='vim'
 
 #git
 alias gls='git ls-files'
+alias gMake="git clone git@bitbucket.org:techcross2/sally-ui.git"
+function gmake() { git clone git@bitbucket.org:techcross2/sally-ui.git $1 ; }
+
 
 #grep
 function GP() { grep $1 -n --include='*.php' -r ./ --color=auto; }
