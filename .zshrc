@@ -86,7 +86,7 @@ export ZLS_COLORS=$LS_COLORS
 export CLICOLOR=true
 
 ### Aliases ###
-source ~/.zsh/git-flow-completion/git-flow-completion.zsh
+#source ~/.zsh/git-flow-completion/git-flow-completion.zsh
 setopt list_types # 補完候補一覧でファイルの種別をマーク表示
 setopt auto_param_keys     # カッコの対応などを自動的に補完
 setopt auto_param_slash    # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
@@ -130,7 +130,7 @@ alias rm='rm -i'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias ls='ls -alh --color'
+#alias ls='ls -alh --color'
 alias vi='vim'
 alias vim='vim'
 
@@ -151,6 +151,8 @@ alias sc='source ~/.zshrc'
 setopt nocorrect
 
 # source zsh-syntax-highlighting
+#mkdir ~/.zsh
+#git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
       source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
@@ -174,3 +176,5 @@ precmd () {
 }
 #バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
 RPROMPT="%1(v|[%F{green}%1v%f]|)"
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

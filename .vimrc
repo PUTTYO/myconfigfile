@@ -4,6 +4,7 @@ set nocompatible
 """ NeoBundelの設定
 " 一旦ファイルタイプ関連を無効化
 filetype off
+filetype plugin indent off
 " neobundleでプラグインを管理
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -33,16 +34,20 @@ let javascript_enable_domhtmlcss = 1
 "let b:javascript_fold = 1
 "syntax match jsFunctionVar /\<[a-zA-Z_$][0-9a-zA-Z_$]*\>\(\s*=\s*function\s*\)\@=/ containedin=jsFuncBlock,jsBlock,jsParen
 
-
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'wesleyche/SrcExpl'
 NeoBundle 'w0ng/vim-hybrid'
+" プロジェクトのツリー表示
+NeoBundle 'project.tar.gz'
+" ステータスラインを綺麗にみせるプラグイン
+"NeoBundle 'bling/vim-airline'
 NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'jpalardy/vim-slime'
+NeoBundle 'shawncplus/php.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'mattn/zencoding-vim'
@@ -83,6 +88,15 @@ set t_Co=256
 
 "javascriptの実行をnode.jsで
 let $JS_CMD='node'
+
+" <Leader>Pで、プロジェクトをトグルで開閉する
+nmap <silent> <Leader>P <Plug>ToggleProject
+" <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
+nmap <silent> <Leader>p :Project ~/.vimprojects<CR>
+" サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
+let g:proj_flags = 'imstTv'
+
+
 
 "colorscheme
 let g:hybrid_use_Xresources = 1
@@ -221,7 +235,7 @@ highlight PMenuSbar ctermbg=4
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let php_folding = 0 " PHPの関数やクラスの折りたたみ
+let php_folding = 1 " PHPの関数やクラスの折りたたみ
 let php_sql_query = 1   "文字列の中のSQLをハイライト
 let php_baselib = 1 " Baselibメソッドのハイライト
 let php_htmlInStrings = 1 " HTMLもハイライト
@@ -667,6 +681,9 @@ function! s:my_action.func(candidates)
   exec 'vsplit '. a:candidates[0].action__path
 endfunction
 call unite#custom_action('file', 'my_vsplit', s:my_action)
+
+"tmux
+syntax enable
 
 "no indent
 autocmd FileType * setlocal formatoptions-=ro
