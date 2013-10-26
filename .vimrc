@@ -12,6 +12,27 @@ endif
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundle 'Shougo/neobundle.vim'
 " 以下のプラグインをバンドル
+
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'lilydjwg/colorizer'
+NeoBundle "JulesWang/css.vim"
+"NeoBundle 'skammer/vim-css-color'
+"let g:cssColorVimDoNotMessMyUpdatetime = 1
+"NOTE:この順番で記述しないと補完と自動展開ができない
+"lessの自動変換
+NeoBundle 'git://github.com/plasticscafe/vim-less-autocompile.git'
+autocmd BufRead,BufNewFile *.less set filetype=less
+"自動で変換
+let g:less_autocompile=1
+"圧縮しない
+let g:less_compress=0
+
+"less補完
+NeoBundle 'git://github.com/groenewege/vim-less.git'
+autocmd BufNewFile,BufRead *.less set filetype=css
+
+
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'mklabs/vim-backbone'
 "NeoBundle 'hallettj/jslint.vim'
@@ -267,7 +288,7 @@ highlight PMenuSbar ctermbg=4
 " Perl用設定
 autocmd BufNewFile,BufRead *.psgi   set filetype=perl
 autocmd BufNewFile,BufRead *.t      set filetype=perl
-" Enable snipMate compatibility feature.↲
+" Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -684,6 +705,28 @@ call unite#custom_action('file', 'my_vsplit', s:my_action)
 
 "tmux
 syntax enable
+
+"emment
+let g:user_emmet_mode = 'n'
+let g:user_emmet_leader_key = '<C-c>'
+let g:use_emmet_complete_tag = 1
+let g:user_emmet_settings = {
+      \ 'lang' : 'ja',
+      \ 'html' : {
+      \   'filters' : 'html',
+      \ },
+      \ 'css' : {
+      \   'filters' : 'fc',
+      \ },
+      \ 'php' : {
+      \   'extends' : 'html',
+      \   'filters' : 'html',
+      \ },
+      \}
+augroup EmmitVim
+  autocmd!
+  autocmd FileType * let g:user_emmet_settings.indentation = '               '[:&tabstop]
+augroup END
 
 "no indent
 autocmd FileType * setlocal formatoptions-=ro
