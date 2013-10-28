@@ -1,5 +1,5 @@
 [user]
-    name = Yuji Mori
+	name = YUJI MORI
 
 [core]
     excludesfile = ~/.gitignore
@@ -45,8 +45,15 @@
     ds = diff -C --stat
     dsp = diff -C --stat -p
     dw = diff -C --color-words
+    dwd = git diff --word-diff
+    info = remote show origin
+    l = log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
     lg = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d'
-    l = log
-    m = checkout master
-    ituja = log --patch -S
+    ll = log --stat --abbrev-commit
+    ln = log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset' --name-status
+    lp = log --oneline -n 20 -p
+    la = log --oneline --pretty=format:'[%ad] <%h> %an : %s' --date=raw
+    ls = log --stat --abbrev-commit -n 1 # display previous logk
     graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[push]
+	default = tracking

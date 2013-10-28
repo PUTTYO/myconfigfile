@@ -40,6 +40,44 @@ NeoBundle 'mklabs/vim-backbone'
 NeoBundle 'jiangmiao/simple-javascript-indenter'  "let g:SimpleJsIndenter_BriefMode = 1
 let g:SimpleJsIndenter_BriefMode = 1
 
+NeoBundle 'Align'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'adie/BlockDiff'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'briancollins/vim-jst'
+NeoBundle 'fuenor/JpFormat.vim'
+NeoBundle 'fuenor/qfixgrep'
+NeoBundle 'fuenor/qfixhowm'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-lastpat'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'osyo-manga/unite-qfixhowm'
+NeoBundle 'rhysd/vim-textobj-ruby'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'yaymukund/vim-rabl'
+
+
+
+
 NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'vim-scripts/jshint.vim'
 NeoBundle 'igetgames/vim-backbone-jscomplete'
@@ -72,7 +110,6 @@ NeoBundle 'shawncplus/php.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'open-browser.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tell-k/vim-browsereload-mac'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -84,7 +121,8 @@ NeoBundle 'vim-scripts/dbext.vim'
 NeoBundle 'taichouchou2/vim-rsense'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'taichouchou2/vim-rails'
+"NeoBundle 'taichouchou2/vim-rails'
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'romanvbabenko/rails.vim'
 NeoBundle 'ujihisa/unite-rake'
 NeoBundle 'basyura/unite-rails'
@@ -99,7 +137,8 @@ NeoBundle 'Lokaltog/powerline'
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'hotchpotch/perldoc-vim'
 " シンタックス系プラグインをバンドル
-NeoBundle 'Shougo/neocomplcache'
+"NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 " 実行プラグインをバンドル
 NeoBundle 'thinca/vim-quickrun'
@@ -353,64 +392,64 @@ if has('syntax')
   call ZenkakuSpace()
 endif
 
-
 " neocomplcache
-let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 " 大文字を区切りとしたワイルドカードのように振る舞う機能
-let g:neocomplcache_enable_camel_case_completion = 1
+"let g:neocomplcache_enable_camel_case_completion = 1
 " _区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_enable_underbar_completion = 1
 " 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_smart_case = 1
+"let g:neocomplcache_smart_case = 1
 " シンタックスをキャッシュするときの最小文字長を3に
-let g:neocomplcache_min_syntax_length = 3
+"let g:neocomplcache_min_syntax_length = 3
 "手動補完時に補完を行う入力数を制御
-let g:neocomplcache_manual_completion_start_length = 0
-let g:neocomplcache_caching_percent_in_statusline = 1
-let g:neocomplcache_enable_skip_completion = 1
-let g:neocomplcache_skip_input_time = '0.5'
+"let g:neocomplcache_manual_completion_start_length = 0
+"let g:neocomplcache_caching_percent_in_statusline = 1
+"let g:neocomplcache_enable_skip_completion = 1
+"let g:neocomplcache_skip_input_time = '0.5'
  
 " 補完ウィンドウの設定
-set completeopt=menuone
+"set completeopt=menuone
 " 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_smart_case = 1
 " _(アンダースコア)区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_camel_case_completion  =  1
+"let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_enable_camel_case_completion  =  1
 " ポップアップメニューで表示される候補の数
-let g:neocomplcache_max_list = 20
+"let g:neocomplcache_max_list = 20
 " シンタックスをキャッシュするときの最小文字長
-let g:neocomplcache_min_syntax_length = 3
+"let g:neocomplcache_min_syntax_length = 3
 " ディクショナリ定義
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'php' : $HOME . '/.vim/dict/php.dict',
-    \ 'ctp' : $HOME . '/.vim/dict/php.dict'
-    \ }
+"let g:neocomplcache_dictionary_filetype_lists = {
+"    \ 'default' : '',
+"    \ 'php' : $HOME . '/.vim/dict/php.dict',
+"    \ 'ctp' : $HOME . '/.vim/dict/php.dict'
+"    \ }
 
 
-if !exists('g:neocomplcache_keyword_patterns')
-	        let g:neocomplcache_keyword_patterns = {}
-endif
-	let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"if !exists('g:neocomplcache_keyword_patterns')
+"	        let g:neocomplcache_keyword_patterns = {}
+"endif
+"	let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 	" スニペットを展開する。スニペットが関係しないところでは行末まで削除
-	imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
-	smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+"	imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache"_snippets_expand)" : "\<C-o>D"
+"	smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache"_snippets_expand)" : "\<C-o>D"
 	" 前回行われた補完をキャンセルします
-	inoremap <expr><C-g> neocomplcache#undo_completion()
-	" 補完候補のなかから、共通する部分を補完します
-	inoremap <expr><C-l> neocomplcache#complete_common_string()
-	" 改行で補完ウィンドウを閉じる
-	inoremap <expr><CR> neocomplcache#smart_close_popup()
-	"tabで補完候補の選択を行う
-	inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-	inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-	" <C-h>や<BS>を押したときに確実にポップアップを削除します
+"	inoremap <expr><C-g> neocomplcache#undo_completion()
+"	" 補完候補のなかから、共通する部分を補完します
+"	inoremap <expr><C-l> neocomplcache#complete_common_string()
+"	" 改行で補完ウィンドウを閉じる
+"	inoremap <expr><CR> neocomplcache#smart_close_popup()
+"	"tabで補完候補の選択を行う
+"	inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+"	inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+"	" <C-h>や<BS>を押したときに確実にポップアップを削除します
 "	inoremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>”
 	" 現在選択している候補を確定します
-	inoremap <expr><C-y> neocomplcache#close_popup()
+"	inoremap <expr><C-y> neocomplcache#close_popup()
 	" 現在選択している候補をキャンセルし、ポップアップを閉じます
-	inoremap <expr><C-e> neocomplcache#cancel_popup()
+"	inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
 "閉じた場所のkioku1:
@@ -473,11 +512,14 @@ au BufNewFile,BufRead *.* set tags+=$HOME/project/sally-ui/tags
 nnoremap <C-]> g<C-]>
 
 "Tlist
+let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
 let g:tlist_javascript_settings = 'javascript;c:class;m:method;F:function;p:property'
 "let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"  " ctagsのコマンド
 let Tlist_Show_One_File = 1                   "現在表示中のファイルのみのタグしか表示しない
-let Tlist_Use_Right_Window = 1                " 右側にtag listのウインドうを表示する
+"let Tlist_Use_Right_Window = 1                " 右側にtag listのウインドうを表示する
+let Tlist_Use_Light_Window = 1                " 右側にtag listのウインドうを表示する
 let Tlist_Exit_OnlyWindow = 1                 " taglistのウインドウだけならVimを閉じる
+let Tlist_WinWidth = 20 
 map <silent> <leader>l :TlistToggle<CR>       "ウインドウを開いたり閉じたり出来るショートカット
 
 "srcexpl
@@ -642,7 +684,6 @@ syn keyword htmlArg contained sizes scoped async reversed sandbox srcdoc
 syn keyword htmlArg contained hidden role
 syn match   htmlArg "\<\(aria-[\-a-zA-Z0-9_]\+\)=" contained
 syn match   htmlArg contained "\s*data-[-a-zA-Z0-9_]\+"
-
 
 
 """ unite.vim

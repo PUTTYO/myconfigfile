@@ -136,8 +136,8 @@ alias vim='vim'
 
 #git
 alias gls='git ls-files'
-alias gMake="git clone git@bitbucket.org:techcross2/sally-ui.git"
-function gmake() { git clone git@bitbucket.org:techcross2/sally-ui.git $1 ; }
+alias gMake="git clone git@bitbucket.org:techcrosstest/sally-ui.git"
+function gmake() { git clone git@bitbucket.org:techcrosstest/sally-ui.git $1 ; }
 
 
 #grep
