@@ -1,5 +1,11 @@
 #path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH=$RBENV_ROOT/bin:$PATH
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 
 #set
 export EDITOR=vim        # エディタをvimに設定
@@ -176,5 +182,3 @@ precmd () {
 }
 #バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
 RPROMPT="%1(v|[%F{green}%1v%f]|)"
-export RBENV_ROOT=/usr/local/var/rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

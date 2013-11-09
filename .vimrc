@@ -78,7 +78,7 @@ NeoBundle 'yaymukund/vim-rabl'
 
 
 
-NeoBundle 'teramako/jscomplete-vim'
+"NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'vim-scripts/jshint.vim'
 NeoBundle 'igetgames/vim-backbone-jscomplete'
 "NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
