@@ -19,6 +19,8 @@ NeoBundle 'lilydjwg/colorizer'
 NeoBundle "JulesWang/css.vim"
 "NeoBundle 'skammer/vim-css-color'
 "let g:cssColorVimDoNotMessMyUpdatetime = 1
+
+
 "NOTE:この順番で記述しないと補完と自動展開ができない
 "lessの自動変換
 NeoBundle 'git://github.com/plasticscafe/vim-less-autocompile.git'
@@ -29,8 +31,9 @@ let g:less_autocompile=1
 let g:less_compress=0
 
 "less補完
-NeoBundle 'git://github.com/groenewege/vim-less.git'
-autocmd BufNewFile,BufRead *.less set filetype=css
+NeoBundle 'groenewege/vim-less'
+autocmd BufNewFile,BufRead *.less set filetype=less
+"autocmd BufNewFile,BufRead *.less set filetype=css
 
 
 NeoBundle 'Shougo/unite.vim'
@@ -476,7 +479,7 @@ if has("autocmd")
         autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
         autocmd FileType eruby      setlocal sw=2 sts=2 ts=2 et
         autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
-        autocmd FileType html       setlocal sw=4 sts=4 ts=4 et
+        autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
         "autocmd FileType javascript setlocal sw=4 sts=4 ts=4 et
         autocmd FileType less,sass  setlocal sw=2 sts=2 ts=2 et
@@ -633,7 +636,10 @@ function! MyModified()
       endfunction
 
       function! MyMode()
-        return winwidth('.') > 60 ? lightline#mode() : ''
+        return  &ft == 'unite' ? 'Unite' :
+               \ &ft == 'vimfiler' ? 'VimFiler' :
+               \ &ft == 'vimshell' ? 'VimShell' :
+               \ winwidth('.') > 60 ? lightline#mode() : ''
       endfunction
 
 "空白文字をhighlight
@@ -658,7 +664,7 @@ autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
 let g:jscomplete_use = ['dom', 'moz', 'es6th']
 
 " このようにするとjshintを必ず使ってチェックしてくれるようになる
-"let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_jshint_conf="~/.jshintrc"
 "let g:syntastic_auto_loc_list = 1
