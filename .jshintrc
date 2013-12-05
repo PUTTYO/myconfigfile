@@ -3,14 +3,14 @@
   "indent" : 4,              // インデントの深さ
   "maxlen" : 500,            // 一行の最大長
   "unused" : true,           // 宣言したきり使っていない変数を検出
-  //"undef": true,             // 定義されていない変数の使用を禁止する
+  //"undef": true,           // 定義されていない変数の使用を禁止する
   "camelcase":true,          // キャメルケース
   "eqeqeq":true,             // ==、!=の使用禁止
   "devel" : true,            // console、alertを許可
   "immed" : true,            //()を囲まない即時関数の呼び出しを禁止
   "latedef" : true,          //定義する前に変数を使用することを禁止(巻き上げ)
-  "newcap"   : true,          //コンストラクタ関数は先頭を大文字に。通常関数は小文字に
+  "newcap"   : true,         //コンストラクタ関数は先頭を大文字に。通常関数は小文字に
   "nonew"    : true,         //newの結果を代入したいことを禁止する
-  "quotmark": true,           //文字列のクォートを''か""どちらかに統一する
-  "trailing": true          //行末の余計なスペースを禁止する
+  "quotmark": "single" ,     //文字列のクォートを''か""どちらかに統一する
+  "trailing": true           //行末の余計なスペースを禁止する
 }

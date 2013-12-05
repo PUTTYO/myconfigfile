@@ -77,7 +77,7 @@ NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'yaymukund/vim-rabl'
-
+NeoBundle 'kana/vim-fakeclip.git'
 
 
 
@@ -159,8 +159,6 @@ nmap <silent> <Leader>p :Project ~/.vimprojects<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
 let g:proj_flags = 'imstTv'
 
-
-
 "colorscheme
 let g:hybrid_use_Xresources = 1
 colorscheme hybrid
@@ -186,7 +184,8 @@ set backspace=indent,eol,start      " バックスペースで各種消せるよ
 set vb t_vb=                        " ビープ音を消す
 set novisualbell
 set clipboard+=unnamed " OSのクリップボードを使う
-set clipboard=unnamed  " OSのクリップボードを使う
+set clipboard+=autoselect " OSのクリップボードを使う
+"set clipboard=unnamed  " OSのクリップボードを使う
 set list " 不可視文字を表示
 set number  " 行番号を表示
 set ruler " 右下に表示される行・列の番号を表示する
@@ -481,7 +480,7 @@ if has("autocmd")
         autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
-        "autocmd FileType javascript setlocal sw=4 sts=4 ts=4 et
+        autocmd FileType javascript setlocal sw=4 sts=4 ts=4 et
         autocmd FileType less,sass  setlocal sw=2 sts=2 ts=2 et
         autocmd FileType lisp       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType markdown   setlocal sw=4 sts=4 ts=4 et
