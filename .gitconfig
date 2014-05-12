@@ -1,5 +1,6 @@
 [user]
-	name = PUTTYO
+    name = YUJI MORI
+	email = mori.yuji@techcross.co.jp
 
 [core]
     excludesfile = ~/.gitignore
@@ -30,7 +31,8 @@
     st = status
     sh = show
     sb = show-branch
-    br = branch
+    br = branch -a
+    brm = branch -m
     rema = rebase origin/master master
     ci = commit
     cm = commit

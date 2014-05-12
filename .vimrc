@@ -297,7 +297,7 @@ highlight PMenuSbar ctermbg=4
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let php_folding = 1 " PHPの関数やクラスの折りたたみ
+let php_folding = 0 " PHPの関数やクラスの折りたたみ
 let php_sql_query = 1   "文字列の中のSQLをハイライト
 let php_baselib = 1 " Baselibメソッドのハイライト
 let php_htmlInStrings = 1 " HTMLもハイライト

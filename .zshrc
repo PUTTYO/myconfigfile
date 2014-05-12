@@ -1,4 +1,8 @@
+source /home/mori/.phpbrew/bashrc
+export PHPBREW_SET_PROMPT=1
+
 #path
+export PATH=/usr/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
@@ -143,7 +147,7 @@ alias vim='vim'
 #git
 alias gls='git ls-files'
 alias gMake="git clone git@bitbucket.org:techcrosstest/sally-ui.git"
-function gmake() { git clone git@bitbucket.org:techcrosstest/sally-ui.git $1 ; }
+function gmake() { git clone git@bitbucket.org:techcrosstest/sally-ui2.git $1 ; }
 
 
 #grep
