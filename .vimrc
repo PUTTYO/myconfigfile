@@ -13,13 +13,6 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundle 'Shougo/neobundle.vim'
 " 以下のプラグインをバンドル
 
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'lilydjwg/colorizer'
-NeoBundle "JulesWang/css.vim"
-"NeoBundle 'skammer/vim-css-color'
-"let g:cssColorVimDoNotMessMyUpdatetime = 1
-
 
 "NOTE:この順番で記述しないと補完と自動展開ができない
 "lessの自動変換
@@ -38,20 +31,10 @@ autocmd BufNewFile,BufRead *.less set filetype=less
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'mklabs/vim-backbone'
-"NeoBundle 'hallettj/jslint.vim'
-
 NeoBundle 'jiangmiao/simple-javascript-indenter'  "let g:SimpleJsIndenter_BriefMode = 1
 let g:SimpleJsIndenter_BriefMode = 1
 
-NeoBundle 'Align'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'adie/BlockDiff'
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'briancollins/vim-jst'
-NeoBundle 'fuenor/JpFormat.vim'
-NeoBundle 'fuenor/qfixgrep'
-NeoBundle 'fuenor/qfixhowm'
-NeoBundle 'gregsexton/gitv'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-lastpat'
@@ -59,35 +42,14 @@ NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/gist-vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'osyo-manga/unite-qfixhowm'
-NeoBundle 'rhysd/vim-textobj-ruby'
-NeoBundle 'rking/ag.vim'
 NeoBundle 'thinca/vim-qfreplace'
-NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'thinca/vim-visualstar'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'yaymukund/vim-rabl'
-NeoBundle 'kana/vim-fakeclip.git'
-
-
-
-"NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'vim-scripts/jshint.vim'
 NeoBundle 'igetgames/vim-backbone-jscomplete'
-"NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-"NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'othree/javascript-libraries-syntax.vim'
-"NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'pangloss/vim-javascript'
 "set regexpengine = 1
 syntax enable
@@ -96,57 +58,31 @@ let javascript_enable_domhtmlcss = 1
 "let b:javascript_fold = 1
 "syntax match jsFunctionVar /\<[a-zA-Z_$][0-9a-zA-Z_$]*\>\(\s*=\s*function\s*\)\@=/ containedin=jsFuncBlock,jsBlock,jsParen
 
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'wesleyche/SrcExpl'
 NeoBundle 'w0ng/vim-hybrid'
 " プロジェクトのツリー表示
 NeoBundle 'project.tar.gz'
 " ステータスラインを綺麗にみせるプラグイン
-"NeoBundle 'bling/vim-airline'
 NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'shawncplus/php.vim'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tell-k/vim-browsereload-mac'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-endwise.git'
-NeoBundle 'ruby-matchit'
 NeoBundle 'vim-scripts/dbext.vim'
-NeoBundle 'taichouchou2/vim-rsense'
-NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'taichouchou2/vim-rails'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'romanvbabenko/rails.vim'
-NeoBundle 'ujihisa/unite-rake'
-NeoBundle 'basyura/unite-rails'
-NeoBundle 'thinca/vim-ref'
-"NeoBundle 'taichouchou2/vim-ref-ri'
-NeoBundle 'taka84u9/vim-ref-ri'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'thoughtbot/vim-rspec'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Lokaltog/powerline'
-" Perl関連プラグインをバンドル
-NeoBundle 'petdance/vim-perl'
-NeoBundle 'hotchpotch/perldoc-vim'
 " シンタックス系プラグインをバンドル
 "NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 " 実行プラグインをバンドル
 NeoBundle 'thinca/vim-quickrun'
-"undo
-NeoBundle 'sjl/gundo.vim'
 set t_Co=256
 
 "javascriptの実行をnode.jsで
@@ -175,7 +111,6 @@ nnoremap <silent>bb :b#<CR>
 filetype plugin on
 filetype indent on
 
-" 環境設定系
 syntax on                           " シンタックスハイライト
 set encoding=utf8                   " エンコード
 set fileencoding=utf-8              " ファイルエンコード
@@ -213,7 +148,7 @@ set showcmd " コマンドを画面最下部に表示する
 
 set tabstop=4 " タブを表示するときの幅
 set shiftwidth=4 " タブを挿入するときの幅
-set expandtab
+"set expandtab
 
 " w!! でスーパーユーザーとして保存（sudoが使える環境限定）
 cmap w!! w !sudo tee > /dev/null %
@@ -293,87 +228,6 @@ autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
 highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
-
-" :makeでPHP構文チェック
-au FileType php setlocal makeprg=php\ -l\ %
-au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let php_folding = 0 " PHPの関数やクラスの折りたたみ
-let php_sql_query = 1   "文字列の中のSQLをハイライト
-let php_baselib = 1 " Baselibメソッドのハイライト
-let php_htmlInStrings = 1 " HTMLもハイライト
-let php_noShortTags = 1 " <? を無効にする→ハイライト除外にする
-let php_parent_error_close = 1 " ] や ) の対応エラーをハイライト
-let php_parent_error_open = 1
-" SQLのPHP文字リテラルへの整形(:Sqltop, :Sqlfromp)
-function! SQLToPHP()
-%s/^\(.\+\)$/"\1 " \./g
-
-normal G$
-execute "normal ?.&lt;CR&gt;"
-normal xxggVG
-echo "Convert to PHP String is finished."
-endfunction
-command! Sqltop :call SQLToPHP()
-function! SQLFromPHP()
-%s/^"\(.\+\) " *\.*$/\1/g
-
-normal ggVG
-echo "Convert from PHP String is finished."
-endfunction
-command! Sqlfromp :call SQLFromPHP()
-" ハイライト色設定
-highlight Pmenu ctermbg=4
-highlight PmenuSel ctermbg=1
-highlight PMenuSbar ctermbg=4
-
-" Perl用設定
-autocmd BufNewFile,BufRead *.psgi   set filetype=perl
-autocmd BufNewFile,BufRead *.t      set filetype=perl
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets/snippets'
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = { 'default'    : '', 'perl'       : $HOME . '/.vim/dict/perl.dict' }
-
-" Java用設定
-"SQLのJava文字リテラルへの整形(:Sqltoj, :Sqlfromj)
-function! SQLToJava()
-%s/^\(.\+\)$/"\1 " \+/g
-
-normal G$
-execute "normal ?+\&lt;CR&gt;"
-normal xxggVG
-echo "Convert to Java String is finished."
-endfunction
-command! Sqltoj :call SQLToJava()
-function! SQLFromJava()
-%s/^"\(.\+\) " *+*$/\1/g
-
-normal ggVG
-echo "Convert from Java String is finished."
-endfunction
-command! Sqlfromj :call SQLFromJava()
-
-" Ruby用設定
-" :makeでRuby構文チェック
-au FileType ruby setlocal makeprg=ruby\ -c\ %
-au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
 " \ + rでスクリプト実行
 nmap <Leader>r <plug>(quickrun)
@@ -507,7 +361,8 @@ autocmd InsertLeave * set nopaste
 "ctags
 set tags =tags
 "au BufNewFile,BufRead *.php set tags+=$HOME/php.tags
-au BufNewFile,BufRead *.* set tags+=$HOME/project/sally-ui/tags
+au BufNewFile,BufRead *.* set tags+=$HOME/code/sally/tags
+"au BufNewFile,BufRead *.* set tags+=$HOME/code/sally-ui/tags
 "au BufNewFile,BufRead *.js set tags+=$HOME/js.tags
 "autocmd FileType php set tags=$HOME/.vim/tags/cakephp13.tags,$HOME/.vim/tags/cakephp_app.tags
 " tagsジャンプの時に複数ある時は一覧表示
@@ -751,28 +606,6 @@ call unite#custom_action('file', 'my_vsplit', s:my_action)
 
 "tmux
 syntax enable
-
-"emment
-let g:user_emmet_mode = 'n'
-let g:user_emmet_leader_key = '<C-c>'
-let g:use_emmet_complete_tag = 1
-let g:user_emmet_settings = {
-      \ 'lang' : 'ja',
-      \ 'html' : {
-      \   'filters' : 'html',
-      \ },
-      \ 'css' : {
-      \   'filters' : 'fc',
-      \ },
-      \ 'php' : {
-      \   'extends' : 'html',
-      \   'filters' : 'html',
-      \ },
-      \}
-augroup EmmitVim
-  autocmd!
-  autocmd FileType * let g:user_emmet_settings.indentation = '               '[:&tabstop]
-augroup END
 
 "no indent
 autocmd FileType * setlocal formatoptions-=ro

@@ -4,8 +4,9 @@
 
 [core]
     excludesfile = ~/.gitignore
-    autocrlf = false
+	autocrlf = false
 	editor = vim
+	safecrlf = true
 [color]
     ui = auto
 	status = auto
@@ -21,7 +22,7 @@
     frag = magenta bold
     old = red bold
     new = green bold
-    whitespace = red reverse
+    #whitespace = red reverse
 
 [color "status"]
     added = yellow

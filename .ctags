@@ -17,5 +17,8 @@
 --regex-js=/([^= ]+)[ \t]*=[ \t]*[^"]'[^']*/\1/,string/
 --regex-js=/([^= ]+)[ \t]*=[ \t]*[^']"[^"]*/\1/,string/
 
---php-kinds=cfd
+--php-kinds=cfdv
+--append=yes
+--recurse=yes
+--langmap=PHP:+.inc
 
