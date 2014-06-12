@@ -12,38 +12,24 @@ endif
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundle 'Shougo/neobundle.vim'
 " 以下のプラグインをバンドル
+NeoBundle 'Shougo/unite.vim'
 
-
-"NOTE:この順番で記述しないと補完と自動展開ができない
-"lessの自動変換
-NeoBundle 'git://github.com/plasticscafe/vim-less-autocompile.git'
-autocmd BufRead,BufNewFile *.less set filetype=less
-"自動で変換
-let g:less_autocompile=1
-"圧縮しない
-let g:less_compress=0
-
-"less補完
 NeoBundle 'groenewege/vim-less'
 autocmd BufNewFile,BufRead *.less set filetype=less
-"autocmd BufNewFile,BufRead *.less set filetype=css
-
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline'
 
 NeoBundle 'mklabs/vim-backbone'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'igetgames/vim-backbone-jscomplete'
-NeoBundle 'jiangmiao/simple-javascript-indenter'  "let g:SimpleJsIndenter_BriefMode = 1
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+" この設定入れるとshiftwidthを1にしてインデントしてくれる
 let g:SimpleJsIndenter_BriefMode = 1
+" この設定入れるとswitchのインデントがいくらかマシに
+let g:SimpleJsIndenter_CaseIndentLevel = -1
 
 
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'mattn/gist-vim'
-
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'osyo-manga/unite-qfixhowm'
+NeoBundle 'thinca/vim-qfreplace'
 
 NeoBundle 'vim-scripts/jshint.vim'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
@@ -59,7 +45,6 @@ let javascript_enable_domhtmlcss = 1
 NeoBundle 'w0ng/vim-hybrid'
 
 " ステータスラインを綺麗にみせるプラグイン
-NeoBundle 'shawncplus/php.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
