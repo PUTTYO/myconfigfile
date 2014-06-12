@@ -102,12 +102,25 @@ alias egrep='egrep --color=auto'
 
 #ls aliases
 alias rm='rm -i'
+alias vi='vim'
+alias vim='vim'
+
+case "${OSTYPE}" in
+freebsd*|darwin*)
+  alias ls="ls -GF"
+  ;;
+linux*)
+  alias ls="ls -F --color"
+  ;;
+esac
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias ls='ls -alh --color'
-alias vi='vim'
-alias vim='vim'
+
+export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
+export LS_COLORS='di=01;36:ln=01;35:ex=01;32'
+zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'
 
 #git
 alias gls='git ls-files'
