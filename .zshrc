@@ -1,7 +1,10 @@
-source /home/mori/.phpbrew/bashrc
-export PHPBREW_SET_PROMPT=1
+if [ -f ~/phpbrew/bashrc ]; then
+    source /home/mori/.phpbrew/bashrc
+    export PHPBREW_SET_PROMPT=1
+fi
 
 #path
+export PATH=$PATH:/usr/local/go/bin
 export PATH=/usr/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
@@ -18,47 +21,19 @@ export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 export GREP_OPTIONS='--binary-files=without-match'
 
-#bindkey -e               # キーバインドをemacsモードに設定
 bindkey -v              # キーバインドをviモードに設定
-
 setopt no_beep           # ビープ音
 setopt magic_equal_subst # =以降も補完する(--prefix=/usrなど)
 setopt prompt_subst      # プロンプト定義内で変数置換やコマンド置換を扱う
 setopt notify            # バックグラウンドジョブの状態変化を即時報告
-#setopt auto_cd           # ディレクトリ名の入力のみで移動
-#setopt auto_pushd        # cd時にディレクトリスタックにpushdする
-#setopt equals            # =commandを`which command`と同じ処理
-
 unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
 
 # 補完関数の表示を強化する
 autoload -U compinit; compinit -u # 補完機能を有効
-#setopt auto_list                 # 補完候補を一覧で表示(d)
 unsetopt auto_list                #2回目のTABで一覧
-#setopt auto_menu                 # 補完キー連打で補完候補を順に表示(d)
 setopt list_packed                # 補完候補をできるだけ詰めて表示
 setopt list_types                 # 補完候補にファイルの種類も表示
 bindkey "^[[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順("\e[Z"でも動作する)
-zstyle :compinstall filename '~/.zshrc'
-#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小文字を区別しない
-#zstyle ':completion:*' verbose yes
-#zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-#zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
-#zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
-#zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
-#zstyle ':completion:*:options' description 'yes'
-#zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
-## 補完候補のカーソル選択を有効に
-#zstyle ':completion:*:default' menu select=1
-# 補完候補に色を付ける
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# マッチ種別を別々に表示
-zstyle ':completion:*' group-name ''
-
-# セパレータを設定する
-zstyle ':completion:*' list-separator '-->'
-zstyle ':completion:*:manuals' separate-sections true
 
 #zsh-completions
 [ -d $HOME/.zsh/zsh-completions/src ] && fpath=($HOME/.zsh/zsh-completions/src $fpath)
@@ -78,8 +53,6 @@ setopt hist_ignore_dups   # 直前と同じコマンドをヒストリに追加�
 setopt extended_history   # zsh の開始, 終了時刻をヒストリファイルに書き込む
 setopt hist_verify # ヒストリを呼び出してから実行する間に一旦編集
 function history-all { history -E 1 }  # すべてのヒストリを表示
-#setopt share_history # ヒストリを共有
-#setopt hist_ignore_space # コマンドラインの先頭がスペースで始まる場合ヒストリに追加しない
 
 # マッチしたコマンドのヒストリを表示
 autoload history-search-end
@@ -88,15 +61,7 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-# 色
-export LSCOLORS=Exfxcxdxbxegedabagacad # 色の設定
-export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30' # 補完時の色の設定
-# ZLS_COLORSとは？
-export ZLS_COLORS=$LS_COLORS
-export CLICOLOR=true
-
 ### Aliases ###
-#source ~/.zsh/git-flow-completion/git-flow-completion.zsh
 setopt list_types # 補完候補一覧でファイルの種別をマーク表示
 setopt auto_param_keys     # カッコの対応などを自動的に補完
 setopt auto_param_slash    # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
@@ -169,7 +134,7 @@ fi
 
 #prompt
 #PROMPT='[%F{green}%B%n%b%f@%F{cyan}%d%f] # '
-PROMPT='[%F{green}%B%n%b%f@%F{cyan}%~%f] # '
+PROMPT='[%F{green}%n%b%f@%F{cyan}%~%f] # '
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 setopt prompt_subst
 autoload -Uz vcs_info

@@ -148,7 +148,7 @@ set showcmd " コマンドを画面最下部に表示する
 
 set tabstop=4 " タブを表示するときの幅
 set shiftwidth=4 " タブを挿入するときの幅
-"set expandtab
+set noexpandtab
 
 " w!! でスーパーユーザーとして保存（sudoが使える環境限定）
 cmap w!! w !sudo tee > /dev/null %
@@ -248,66 +248,6 @@ if has('syntax')
   call ZenkakuSpace()
 endif
 
-" neocomplcache
-"let g:neocomplcache_enable_at_startup = 1
-let g:neocomplete#enable_at_startup = 1
-" 大文字を区切りとしたワイルドカードのように振る舞う機能
-"let g:neocomplcache_enable_camel_case_completion = 1
-" _区切りの補完を有効化
-"let g:neocomplcache_enable_underbar_completion = 1
-" 大文字が入力されるまで大文字小文字の区別を無視する
-"let g:neocomplcache_smart_case = 1
-" シンタックスをキャッシュするときの最小文字長を3に
-"let g:neocomplcache_min_syntax_length = 3
-"手動補完時に補完を行う入力数を制御
-"let g:neocomplcache_manual_completion_start_length = 0
-"let g:neocomplcache_caching_percent_in_statusline = 1
-"let g:neocomplcache_enable_skip_completion = 1
-"let g:neocomplcache_skip_input_time = '0.5'
- 
-" 補完ウィンドウの設定
-"set completeopt=menuone
-" 大文字が入力されるまで大文字小文字の区別を無視する
-"let g:neocomplcache_enable_smart_case = 1
-" _(アンダースコア)区切りの補完を有効化
-"let g:neocomplcache_enable_underbar_completion = 1
-"let g:neocomplcache_enable_camel_case_completion  =  1
-" ポップアップメニューで表示される候補の数
-"let g:neocomplcache_max_list = 20
-" シンタックスをキャッシュするときの最小文字長
-"let g:neocomplcache_min_syntax_length = 3
-" ディクショナリ定義
-"let g:neocomplcache_dictionary_filetype_lists = {
-"    \ 'default' : '',
-"    \ 'php' : $HOME . '/.vim/dict/php.dict',
-"    \ 'ctp' : $HOME . '/.vim/dict/php.dict'
-"    \ }
-
-
-"if !exists('g:neocomplcache_keyword_patterns')
-"	        let g:neocomplcache_keyword_patterns = {}
-"endif
-"	let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-	" スニペットを展開する。スニペットが関係しないところでは行末まで削除
-"	imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache"_snippets_expand)" : "\<C-o>D"
-"	smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache"_snippets_expand)" : "\<C-o>D"
-	" 前回行われた補完をキャンセルします
-"	inoremap <expr><C-g> neocomplcache#undo_completion()
-"	" 補完候補のなかから、共通する部分を補完します
-"	inoremap <expr><C-l> neocomplcache#complete_common_string()
-"	" 改行で補完ウィンドウを閉じる
-"	inoremap <expr><CR> neocomplcache#smart_close_popup()
-"	"tabで補完候補の選択を行う
-"	inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-"	inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-"	" <C-h>や<BS>を押したときに確実にポップアップを削除します
-"	inoremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>”
-	" 現在選択している候補を確定します
-"	inoremap <expr><C-y> neocomplcache#close_popup()
-	" 現在選択している候補をキャンセルし、ポップアップを閉じます
-"	inoremap <expr><C-e> neocomplcache#cancel_popup()
-
-
 "閉じた場所のkioku1:
 if has("autocmd")
         autocmd BufReadPost *
@@ -339,7 +279,7 @@ if has("autocmd")
         autocmd FileType lisp       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType markdown   setlocal sw=4 sts=4 ts=4 et
         autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
-        autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
+        autocmd FileType php        setlocal sw=4 sts=4 ts=4 noet
         autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
         autocmd FileType ruby       setlocal sw=2 sts=2 ts=2 et
         autocmd FileType gitcommit  setlocal sw=2 sts=2 ts=2 et
@@ -378,52 +318,6 @@ let Tlist_Use_Light_Window = 1                " 右側にtag listのウインド
 let Tlist_Exit_OnlyWindow = 1                 " taglistのウインドウだけならVimを閉じる
 let Tlist_WinWidth = 20 
 map <silent> <leader>l :TlistToggle<CR>       "ウインドウを開いたり閉じたり出来るショートカット
-
-"srcexpl
-" // The switch of the Source Explorer
-nmap <F8> :SrcExplToggle<CR>
-
-" // Set the height of Source Explorer window
-let g:SrcExpl_winHeight = 8
-
-" // Set 100 ms for refreshing the Source Explorer
-let g:SrcExpl_refreshTime = 100
-
-" // Set "Enter" key to jump into the exact definition context
-let g:SrcExpl_jumpKey = "<ENTER>"
-
-" // Set "Space" key for back from the definition context
-let g:SrcExpl_gobackKey = "<SPACE>"
-
-" // In order to avoid conflicts, the Source Explorer should know what plugins
-" // except itself are using buffers. And you need add their buffer names into
-" // below listaccording to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-        \ "__Tag_List__",
-        \ "_NERD_tree_" ,
-        \ "Source_Explorer"
-    \ ]
-
-" // Enable/Disable the local definition searching, and note that this is not 
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
-" // It only searches for a match with the keyword according to command 'gd' 
-let g:SrcExpl_searchLocalDef = 1 
-
-" // Do not let the Source Explorer update the tags file when opening 
-let g:SrcExpl_isUpdateTags = 1 
-
-" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to 
-" // create/update the tags file 
-let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
-
-" // Set "<F12>" key for updating the tags file artificially 
-let g:SrcExpl_updateTagsKey = "<F12>" 
-
-" // Set "<F3>" key for displaying the previous definition in the jump list 
-let g:SrcExpl_prevDefKey = "<F3>" 
-
-" // Set "<F4>" key for displaying the next definition in the jump list 
-let g:SrcExpl_nextDefKey = "<F4>" 
 
 "NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -529,23 +423,6 @@ let g:syntastic_mode_map = {
       \ 'passive_filetypes': []
       \ }
 
-" HTML 5 tags
-syn keyword htmlTagName contained article aside audio bb canvas command
-syn keyword htmlTagName contained datalist details dialog embed figure
-syn keyword htmlTagName contained header hgroup keygen mark meter nav output
-syn keyword htmlTagName contained progress time ruby rt rp section time
-syn keyword htmlTagName contained source figcaption
-syn keyword htmlArg contained autofocus autocomplete placeholder min max
-syn keyword htmlArg contained contenteditable contextmenu draggable hidden
-syn keyword htmlArg contained itemprop list sandbox subject spellcheck
-syn keyword htmlArg contained novalidate seamless pattern formtarget
-syn keyword htmlArg contained formaction formenctype formmethod
-syn keyword htmlArg contained sizes scoped async reversed sandbox srcdoc
-syn keyword htmlArg contained hidden role
-syn match   htmlArg "\<\(aria-[\-a-zA-Z0-9_]\+\)=" contained
-syn match   htmlArg contained "\s*data-[-a-zA-Z0-9_]\+"
-
-
 """ unite.vim
 " 入力モードで開始する
 " let g:unite_enable_start_insert=1
@@ -581,28 +458,6 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
-
-nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=45 -toggle -no-quit<Cr>
-autocmd! FileType vimfiler call g:my_vimfiler_settings()
-function! g:my_vimfiler_settings()
-  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<Cr>
-  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<Cr>
-endfunction
-
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
-  wincmd p
-  exec 'split '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_split', s:my_action)
-
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
-  wincmd p
-  exec 'vsplit '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_vsplit', s:my_action)
 
 "tmux
 syntax enable
