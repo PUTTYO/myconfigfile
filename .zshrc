@@ -147,7 +147,7 @@ fi
 
 #prompt
 #PROMPT='[%F{green}%B%n%b%f@%F{cyan}%d%f] # '
-PROMPT='[%F{green}%n%b%f@%F{cyan}%~%f] # '
+PROMPT='[${HOST}:%F{green}%n%b%f@%F{cyan}%~%f] # '
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 setopt prompt_subst
 autoload -Uz vcs_info
