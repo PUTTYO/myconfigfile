@@ -30,25 +30,22 @@ autocmd BufNewFile,BufRead *.less set filetype=less
 
 
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+
 NeoBundle 'mklabs/vim-backbone'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'igetgames/vim-backbone-jscomplete'
 NeoBundle 'jiangmiao/simple-javascript-indenter'  "let g:SimpleJsIndenter_BriefMode = 1
 let g:SimpleJsIndenter_BriefMode = 1
 
+
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-lastpat'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'mattn/gist-vim'
-NeoBundle 'osyo-manga/unite-qfixhowm'
-NeoBundle 'thinca/vim-qfreplace'
+
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'vim-scripts/taglist.vim'
+
 NeoBundle 'vim-scripts/jshint.vim'
-NeoBundle 'igetgames/vim-backbone-jscomplete'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'pangloss/vim-javascript'
 "set regexpengine = 1
@@ -58,27 +55,28 @@ let javascript_enable_domhtmlcss = 1
 "let b:javascript_fold = 1
 "syntax match jsFunctionVar /\<[a-zA-Z_$][0-9a-zA-Z_$]*\>\(\s*=\s*function\s*\)\@=/ containedin=jsFuncBlock,jsBlock,jsParen
 
-NeoBundle 'vim-scripts/taglist.vim'
+
 NeoBundle 'w0ng/vim-hybrid'
-" プロジェクトのツリー表示
-NeoBundle 'project.tar.gz'
+
 " ステータスラインを綺麗にみせるプラグイン
-NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell'
 NeoBundle 'shawncplus/php.vim'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'mattn/webapi-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'tpope/vim-endwise.git'
+
 NeoBundle 'vim-scripts/dbext.vim'
+let dbext_default_profile=""
+let dbext_default_type="MYSQL"
+let dbext_default_user="mori"
+let dbext_default_passwd=""
+let dbext_default_dbname="sally"
+let dbext_default_host="localhost"
+let dbext_default_buffer_lines=20
+
+
 NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'taichouchou2/vim-rails'
 NeoBundle 'Lokaltog/powerline'
 " シンタックス系プラグインをバンドル
-"NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 " 実行プラグインをバンドル
@@ -299,9 +297,10 @@ autocmd InsertLeave * set nopaste
 
 
 "ctags
-set tags =tags
+"set tags =tags
+set tags+=$HOME/code/sally/tags
 "au BufNewFile,BufRead *.php set tags+=$HOME/php.tags
-au BufNewFile,BufRead *.* set tags+=$HOME/code/sally/tags
+"au BufNewFile,BufRead *.* set tags+=$HOME/code/sally/tags
 "au BufNewFile,BufRead *.* set tags+=$HOME/code/sally-ui/tags
 "au BufNewFile,BufRead *.js set tags+=$HOME/js.tags
 "autocmd FileType php set tags=$HOME/.vim/tags/cakephp13.tags,$HOME/.vim/tags/cakephp_app.tags
@@ -309,14 +308,16 @@ au BufNewFile,BufRead *.* set tags+=$HOME/code/sally/tags
 nnoremap <C-]> g<C-]>
 
 "Tlist
-let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
+set modifiable
+set write
+"let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
 let g:tlist_javascript_settings = 'javascript;c:class;m:method;F:function;p:property'
-"let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"  " ctagsのコマンド
+"let Tlist_Ctags_Cmd = "/usr/bin/ctags --append=yes"  " ctagsのコマンド
 let Tlist_Show_One_File = 1                   "現在表示中のファイルのみのタグしか表示しない
 "let Tlist_Use_Right_Window = 1                " 右側にtag listのウインドうを表示する
 let Tlist_Use_Light_Window = 1                " 右側にtag listのウインドうを表示する
 let Tlist_Exit_OnlyWindow = 1                 " taglistのウインドウだけならVimを閉じる
-let Tlist_WinWidth = 20 
+let Tlist_WinWidth = 50
 map <silent> <leader>l :TlistToggle<CR>       "ウインドウを開いたり閉じたり出来るショートカット
 
 "NERDTree
