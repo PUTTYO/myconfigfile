@@ -1,3 +1,11 @@
+#cocos2dx path
+export NDK_ROOT=/Users/mori/code/cocos2dx/android-ndk-r9d
+export ANDROID_SDK_ROOT=/Users/mori/code/cocos2dx/adt-bundle-mac-x86_64-20140321/sdk
+export ANT_ROOT=/usr/local/bin
+# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
+export COCOS_CONSOLE_ROOT=/Users/mori/code/cocos2dx/cocos2d-x-3.1/tools/cocos2d-console/bin
+export PATH=$COCOS_CONSOLE_ROOT:$PATH
+
 if [ -f ~/phpbrew/bashrc ]; then
     source /home/mori/.phpbrew/bashrc
     export PHPBREW_SET_PROMPT=1

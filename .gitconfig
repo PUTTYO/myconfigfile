@@ -6,7 +6,7 @@
     excludesfile = ~/.gitignore
 	autocrlf = false
 	editor = vim
-	safecrlf = true
+	safecrlf = false
 [color]
     ui = auto
 	status = auto
